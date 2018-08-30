@@ -4,12 +4,10 @@ class Author
 
   def initialize(name)
     @name = name
-    @posts = []
   end
 
   def add_post(post)
     post.author = self
-    @posts << post
     post
   end
 
@@ -19,7 +17,7 @@ class Author
   end
 
   def posts
-    @posts
+    Post.all.each { |post| post.author == self }
   end
 
   def self.post_count
